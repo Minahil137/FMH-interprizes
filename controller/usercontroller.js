@@ -27,8 +27,7 @@ app.use(passport.initialize())
 app.use(flash());
 const indexpage= (req, res)=> {
      
-   const message = req.flash('user');
-   res.render('signup.ejs', { message:req.flash('message') } )
+   res.render('index.ejs');
  }
  const nameDuplicate=(re,res,next)=>
 {
