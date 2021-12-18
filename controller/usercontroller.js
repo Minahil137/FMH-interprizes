@@ -27,7 +27,13 @@ app.use(passport.initialize())
 app.use(flash());
 const indexpage= (req, res)=> {
      
+
    res.render('index.ejs');
+
+   // const message = req.flash('user');
+   // res.render('signup.ejs', { message:req.flash('message') } )
+   res.render('map.ejs')
+
  }
  const nameDuplicate=(re,res,next)=>
 {
@@ -107,7 +113,12 @@ const login=(re,res)=>{
 }
 const dash=(re,res)=>{
 
-   res.render('dashboard.ejs')
+  // res.render('dashboard.ejs')
+  
 }
-module.exports = { store,nameDuplicate,indexpage,emailDuplicate,login,authenticat,dash}
+const forget=(re,res)=>{
+
+   res.render("forget.ejs")
+}
+module.exports = { store,nameDuplicate,indexpage,emailDuplicate,login,authenticat,dash,forget}
    
