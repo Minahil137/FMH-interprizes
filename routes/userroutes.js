@@ -40,5 +40,3 @@ router.get('/forgetPassword',controller.forget)
 
 
  
- 
-  module.exports=router

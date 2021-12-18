@@ -19,7 +19,7 @@ db.once('open', () => {
 	console.log("Connected to MongoDB database...");
 });
 const port = 3000
-
+app.use(express.static('public'));
 
 
 app.use(express.json())
@@ -28,7 +28,7 @@ app.listen(port, () => {
 })
 app.use(userroutes)
 
-app.use(express.static('public'));
+
 
 app.use(sellerRoutes)
 
