@@ -6,11 +6,12 @@ passport.use( 'local',
         new LocalStrategy({usernameField : 'username'},(username,password,done)=> {
       User.findOne({username : username})
                 .then((response)=>{
-               
+                  console.log(username)
+                  console.log(password)
                  if(!response) {
-                 
-               
-                 
+             
+               console.log(response)
+                 console.log("ellooo")
                      return done(null,false,{message : 'that name is not registered'});
                  }
                  //match pass
@@ -18,7 +19,7 @@ passport.use( 'local',
            
                      if(response.password===password) {
                
-                      console.log('user mil gayaaaa')
+                   
                          return done(null,response);
                         
                      } else {

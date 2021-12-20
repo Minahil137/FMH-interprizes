@@ -13,7 +13,8 @@ const flash = require('connect-flash');
  router.use(express.json()) // for parsing application/json
  router.use(express.urlencoded({ extended: true }))
   const controller=require('../controller/usercontroller');
-  
+  const { forwardUserAuthenticated } = require("../config/auth");
+  const { ensureUserAuthenticated } = require("../config/auth");  
 
   router.use(cookieParser('NotSoSecret'));
 router.use(session({
@@ -27,10 +28,11 @@ router.use(session({
 router.get('/dashboard',controller.dash)
 router.get('/',controller.indexpage)
 router.get('/login',controller.login)
+router.get('/signup',controller.signUp)
 router.post('/signup',controller.nameDuplicate,controller.emailDuplicate,controller.store)
+router.get('/seller',controller.map)
 
-
- router.post('/login',controller.authenticat)
+router.post('/login',controller.authenticat)
 
   
 

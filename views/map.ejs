@@ -97,10 +97,16 @@ input[type="button"].button-secondary:hover {
   </head>
   <body>
     <div id="map"></div>
-
+    <form action="http://localhost:3000/save" method="post">
+<div id ="result">
+ <label id="t">latitude</label> <input type="text" id="Latitude" name="Latitude">
+ <label id="t">longitude</label> <input type="text" id="longitude" name="longitude">
+ <button>Save</button>
+</form>
+</div>
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly&channel=2"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIScuh5bEdKup46Me9H6VpFJpL6vN8YEQ&callback=initMap&v=weekly&channel=2"
       async
     ></script>
     <script>
@@ -139,8 +145,8 @@ function initMap() {
   response.innerText = "";
   responseDiv = document.createElement("div");
   responseDiv.id = "response-container";
-  //responseDiv.appendChild(response);
-
+  responseDiv.appendChild(response);
+  
   const instructionsElement = document.createElement("p");
 
   instructionsElement.id = "instructions";
@@ -182,12 +188,15 @@ function geocode(request) {
       map.setCenter(results[0].geometry.location);
       marker.setPosition(results[0].geometry.location);
       marker.setMap(map);
-      console.log(results[0].address_components[0].long_name)
+     // console.log(results[0].address_components[0].long_name)
       var infoWindow = new google.maps.InfoWindow({
             content :results[0].formatted_address})
            // results[0].address_components[0].long_name})
           infoWindow.open(map, marker);
-
+let lat=document.getElementById('Latitude')
+lat.value=results[0].geometry.location.lat()
+let long=document.getElementById('longitude')
+long.value=results[0].geometry.location.lng()
       responseDiv.style.display = "block";
       response.innerText = JSON.stringify(result, null, 2);
       return results;

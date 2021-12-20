@@ -26,10 +26,9 @@ app.use(passport.initialize())
  
 app.use(flash());
 const indexpage= (req, res)=> {
+   res.render('index.ejs')
      
-   const message = req.flash('user');
-   res.render('signup.ejs', { message:req.flash('message') } )
- }
+}
  const nameDuplicate=(re,res,next)=>
 {
    user.findOne({"username":re.body.username}).then(response=>{
@@ -52,7 +51,7 @@ const authenticat=(re,res,next)=>{
  console.log( re.body)
    passport.authenticate( 'local',{
       failureRedirect : '/login',
-      successRedirect : '/dashboard',
+      successRedirect : '/sell',
     
       })(re,res,next);
 }
@@ -110,5 +109,15 @@ const dash=(re,res)=>{
 
    res.render('dashboard.ejs')
 }
-module.exports = { store,nameDuplicate,indexpage,emailDuplicate,login,authenticat,dash}
+const map=(re,res)=>{
+
+   res.render('map.ejs')
+}
+const signUp=(re,res)=>{
+     
+      const message = re.flash('user');
+      res.render('signup.ejs', { message:re.flash('message')})
+    }
+
+module.exports = { store,nameDuplicate,indexpage,emailDuplicate,login,authenticat,dash,map,signUp}
    
