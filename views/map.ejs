@@ -97,16 +97,23 @@ input[type="button"].button-secondary:hover {
   </head>
   <body>
     <div id="map"></div>
-    <form action="http://localhost:3000/save" method="post">
+    <form action="/upload" method="Post" enctype="multipart/form-data" accept="application/pdf">
 <div id ="result">
  <label id="t">latitude</label> <input type="text" id="Latitude" name="Latitude">
  <label id="t">longitude</label> <input type="text" id="longitude" name="longitude">
- <button>Save</button>
+
+  <label for="myfile">Select files:</label>
+  <input type="file" id="myfile" name="myfile" multiple><br><br>
+
+
+  
+<button>save</button>
+
 </form>
 </div>
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly&channel=2"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIScuh5bEdKup46Me9H6VpFJpL6vN8YEQ&callback=initMap&v=weekly&channel=2"
       async
     ></script>
     <script>

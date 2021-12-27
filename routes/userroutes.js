@@ -13,7 +13,8 @@ const flash = require('connect-flash');
  router.use(express.json()) // for parsing application/json
  router.use(express.urlencoded({ extended: true }))
   const controller=require('../controller/usercontroller');
-  
+  const { forwardUserAuthenticated } = require("../config/auth");
+  const { ensureUserAuthenticated } = require("../config/auth");  
 
   router.use(cookieParser('NotSoSecret'));
 router.use(session({
@@ -23,15 +24,19 @@ router.use(session({
   saveUninitialized: true
 }));
 
-
 router.get('/dashboard',controller.dash)
 router.get('/',controller.indexpage)
-router.get('/login',controller.login)
-router.post('/signup',controller.nameDuplicate,controller.emailDuplicate,controller.store)
+router.get("/login", forwardUserAuthenticated,controller.login)
+//router.get('/signup',controller.signUp)
+router.post('/signup',controller.store)
 
-router.get('/forgetPassword',controller.forget)
- router.post('/login',controller.authenticat)
+router.post("/login",controller.authenticat);
 
+router.get("/seller",(req, res) =>
+  res.render("map.ejs", {
+    user: req.user
+  })
+);
   
 
 
@@ -40,3 +45,5 @@ router.get('/forgetPassword',controller.forget)
 
 
  
+ 
+  module.exports=router

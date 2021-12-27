@@ -26,15 +26,9 @@ app.use(passport.initialize())
  
 app.use(flash());
 const indexpage= (req, res)=> {
+   res.render('index.ejs')
      
-
-   res.render('index.ejs');
-
-   // const message = req.flash('user');
-   // res.render('signup.ejs', { message:req.flash('message') } )
-   res.render('map.ejs')
-
- }
+}
  const nameDuplicate=(re,res,next)=>
 {
    user.findOne({"username":re.body.username}).then(response=>{
@@ -54,10 +48,10 @@ const indexpage= (req, res)=> {
    
 }
 const authenticat=(re,res,next)=>{
- console.log( re.body)
+ console.log("I am in authenticate function")
    passport.authenticate( 'local',{
+     successRedirect : '/seller',
       failureRedirect : '/login',
-      successRedirect : '/dashboard',
     
       })(re,res,next);
 }
@@ -89,9 +83,10 @@ const  store  =(req, res) =>
 {
 
    const u = new user({
-      username: req.body.username,
-      Email: req.body.Email,
-      password: req.body.password,
+      username: req.body.Name,
+      Email: req.body.email,
+      Phone: req.body.phone,
+      Message:req.body.message
 
 
    })
@@ -99,8 +94,7 @@ const  store  =(req, res) =>
    
 
    u.save().then(() => {
-     req.flash('message',"data submitted")
-    m='Data saved!'
+   //console.log("data adgchj")
     res.redirect('/')
 
 
@@ -113,12 +107,17 @@ const login=(re,res)=>{
 }
 const dash=(re,res)=>{
 
-  // res.render('dashboard.ejs')
-  
+   res.render('dashboard.ejs')
 }
-const forget=(re,res)=>{
+const map=(re,res)=>{
 
-   res.render("forget.ejs")
+   res.render('map.ejs')
 }
-module.exports = { store,nameDuplicate,indexpage,emailDuplicate,login,authenticat,dash,forget}
+const signUp=(re,res)=>{
+     
+      const message = re.flash('user');
+      res.render('signup.ejs', { message:re.flash('message')})
+    }
+
+module.exports = { store,nameDuplicate,indexpage,emailDuplicate,login,authenticat,dash,map,signUp}
    

@@ -7,6 +7,10 @@ const sellerShema= new schema({
     },
     longitude:{
         type:Number
+    },
+    img:
+    {
+      type:String
     }
    
 

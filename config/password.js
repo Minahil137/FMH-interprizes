@@ -4,9 +4,11 @@ const User = require("../models/usermodel");
 module.exports = function(passport) {
 passport.use( 'local',
         new LocalStrategy({usernameField : 'username'},(username,password,done)=> {
+      
       User.findOne({username : username})
                 .then((response)=>{
-               
+                  console.log(`user enter ${username} ${password}`)
+                  console.log(response.password)
                  if(!response) {
                  
                
@@ -17,12 +19,11 @@ passport.use( 'local',
              
            
                      if(response.password===password) {
-               
-                      console.log('user mil gayaaaa')
+                    
                          return done(null,response);
                         
                      } else {
-                    
+                     
                         return done(null,false,{message : 'pass incorrect'});
                      }
                  })
