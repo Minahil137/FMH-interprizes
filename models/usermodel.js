@@ -8,20 +8,10 @@ const userShema= new schema({
 Email:{
 type:String
 },
-Phone:{
-    type:String
-    },
-    Message :{
-        type:String   
-    },
-    password:{
+password:{
         type:String
     },
-    img:
-    {
-        data: Buffer,
-        contentType: String
-    }
+   
 })
 // username: req.body.cf-name,
 //Email: req.body.cf-email,

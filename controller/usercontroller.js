@@ -52,6 +52,7 @@ const authenticat=(re,res,next)=>{
    passport.authenticate( 'local',{
      successRedirect : '/seller',
       failureRedirect : '/login',
+      successRedirect : '/seller',
     
       })(re,res,next);
 }
@@ -83,10 +84,9 @@ const  store  =(req, res) =>
 {
 
    const u = new user({
-      username: req.body.Name,
-      Email: req.body.email,
-      Phone: req.body.phone,
-      Message:req.body.message
+      username: req.body.username,
+      Email:req.body.Email,
+      password:req.body.password
 
 
    })
@@ -111,8 +111,11 @@ const dash=(re,res)=>{
 }
 const map=(re,res)=>{
 
-   res.render('map.ejs')
+   
+   const message = re.flash('user');
+   res.render('map.ejs', { message:re.flash('message')})
 }
+//const FaisalabadLocation=
 const signUp=(re,res)=>{
      
       const message = re.flash('user');

@@ -26,17 +26,13 @@ router.use(session({
 
 router.get('/dashboard',controller.dash)
 router.get('/',controller.indexpage)
-router.get("/login", forwardUserAuthenticated,controller.login)
-//router.get('/signup',controller.signUp)
-router.post('/signup',controller.store)
+router.get('/login',forwardUserAuthenticated,controller.login)
+router.get('/signup',controller.signUp)
+router.post('/signup',controller.nameDuplicate,controller.emailDuplicate,controller.store)
+router.get('/seller',ensureUserAuthenticated,controller.map)
 
-router.post("/login",controller.authenticat);
+router.post('/login',controller.authenticat)
 
-router.get("/seller",(req, res) =>
-  res.render("map.ejs", {
-    user: req.user
-  })
-);
   
 
 

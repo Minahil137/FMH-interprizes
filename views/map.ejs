@@ -97,8 +97,18 @@ input[type="button"].button-secondary:hover {
   </head>
   <body>
     <div id="map"></div>
+    <% if(message.length > 0){%>
+      <div class="alert alert-primary" role="alert">
+    
+      
+        <%=message %>
+         
+            </div>
+  
+          <%}%>
     <form action="/upload" method="Post" enctype="multipart/form-data" accept="application/pdf">
 <div id ="result">
+
  <label id="t">latitude</label> <input type="text" id="Latitude" name="Latitude">
  <label id="t">longitude</label> <input type="text" id="longitude" name="longitude">
 

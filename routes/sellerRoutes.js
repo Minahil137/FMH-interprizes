@@ -25,7 +25,7 @@ const storage = multer.diskStorage({
         {const s = new seller({
  
 
-            Latitude:req.body.Latitude,
+          latitude:req.body.Latitude,
             longitude:req.body.longitude,
             img:req.file.filename
          })
@@ -35,7 +35,7 @@ const storage = multer.diskStorage({
          
         }
     })
-
+router.get('/properties',controller.display)
 //router.post('/save',controller)
 
 	

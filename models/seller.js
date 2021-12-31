@@ -11,7 +11,8 @@ const sellerShema= new schema({
     img:
     {
       type:String
-    }
+    },
+  
    
 
 

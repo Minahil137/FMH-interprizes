@@ -10,9 +10,9 @@ passport.use( 'local',
                   console.log(`user enter ${username} ${password}`)
                   console.log(response.password)
                  if(!response) {
-                 
-               
-                 
+             
+               console.log(response)
+                 console.log("ellooo")
                      return done(null,false,{message : 'that name is not registered'});
                  }
                  //match pass

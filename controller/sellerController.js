@@ -1,38 +1,15 @@
-
-
+const express = require('express');
+const app = express();
+app.set('view engine','ejs');
 const seller=require('../models/seller')
-
-
-  
-
-
-var multer=require('multer')
-//const { authorize } = require('passport');
-
- const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null,'uploads')
-    },
-    filename: function (req, file, cb) {
-      
-      cb(null, file.fieldname)
-    }
-  })
-  
-  const upload = multer(
-      { storage: storage }).single("file")
-
-  
-
-
 const  store  =(req, res) => 
 {
+
    const s = new seller({
  
 
-    latitude:req.body.Latitude,
-      longitude:req.body.longitude,
-      img:req.file.filename
+      Latitude:req.body.Latitude,
+      longitude:req.body.longitude
    })
   
    
@@ -47,4 +24,28 @@ const  store  =(req, res) =>
   
    )
 }
-module.exports=store
+const display=(req,res)=>{
+
+
+
+   seller.find().then((response)=>{
+      console.log(response)
+      res.render('properties.ejs',{response:response})
+   }
+   )
+ 
+   
+   // ).then((response)=>{
+   //    response.forEach((hmm)=>{
+   //     // const lat= array.map(hmm.longitude)
+   //     //  console.log(lat)
+   //    })
+    
+     
+
+    
+
+   //    }).catch((err=>res.send("ello")))
+   
+}
+module.exports={store,display}
