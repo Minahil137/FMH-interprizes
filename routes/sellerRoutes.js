@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
   })
   
   const upload = multer({ storage: storage })
-
+router.get('/thanks',controller.HAPPY)
  router.post("/upload",upload.single('myfile'),(req,res)=>{
 
     
@@ -31,6 +31,7 @@ const storage = multer.diskStorage({
          })
          s.save().then(()=>{
              console.log("saved")
+             res.redirect("/thanks")
          })
          
         }

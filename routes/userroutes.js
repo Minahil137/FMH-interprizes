@@ -24,13 +24,18 @@ router.use(session({
   saveUninitialized: true
 }));
 
-router.get('/dashboard',controller.dash)
+
 router.get('/',controller.indexpage)
 router.get('/login',forwardUserAuthenticated,controller.login)
 router.get('/signup',controller.signUp)
 router.post('/signup',controller.nameDuplicate,controller.emailDuplicate,controller.store)
 router.get('/seller',ensureUserAuthenticated,controller.map)
 
+router.post('/ChangePassword', controller.changePassword);
+router.post('/ForgotPassword', controller.emailSend);
+
+router.get('/ChangePassword', controller.changepasswordpage);
+router.get('/ForgotPassword', controller.forgotpasswordpage)
 router.post('/login',controller.authenticat)
 
   

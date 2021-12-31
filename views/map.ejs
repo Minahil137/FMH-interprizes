@@ -5,7 +5,7 @@
        /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
 #map {
-  height: 100%;
+  height: 80%;
 }
 
 /* Optional: Makes the sample page fill the window. */
@@ -23,7 +23,7 @@ input[type="text"] {
   box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
   margin: 10px;
   padding: 0 0.5em;
-  font: 400 18px Roboto, Arial, sans-serif;
+  font: 400 18px Roboto, sanfoundry, sans-serif;
   overflow: hidden;
   line-height: 40px;
   margin-right: 0;
@@ -47,11 +47,11 @@ input[type="button"]:hover {
   background: #ebebeb;
 }
 input[type="button"].button-primary {
-  background-color: #1a73e8;
+  background-color: orangered;
   color: white;
 }
 input[type="button"].button-primary:hover {
-  background-color: #1765cc;
+  background-color: orangered;
 }
 input[type="button"].button-secondary {
   background-color: white;
@@ -62,7 +62,7 @@ input[type="button"].button-secondary:hover {
 }
 
 #response-container {
-  background-color: #fff;
+  background-color: orangered;
   border: 0;
   border-radius: 2px;
   box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
@@ -94,6 +94,23 @@ input[type="button"].button-secondary:hover {
     <title>Geocoding Service</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <!-- jsFiddle will insert css and js -->
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        color: #1a1f36;
+        box-sizing: border-box;
+        word-wrap: break-word;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Ubuntu,sans-serif;
+      }
+      body {
+          min-height: 100%;
+          background-color: #ffffff;
+      }
+      h1 {
+          letter-spacing: -1px;
+      }
+    </style>\
   </head>
   <body>
     <div id="map"></div>
@@ -108,15 +125,17 @@ input[type="button"].button-secondary:hover {
           <%}%>
     <form action="/upload" method="Post" enctype="multipart/form-data" accept="application/pdf">
 <div id ="result">
-
+ 
  <label id="t">latitude</label> <input type="text" id="Latitude" name="Latitude">
  <label id="t">longitude</label> <input type="text" id="longitude" name="longitude">
-
-  <label for="myfile">Select files:</label>
+ <label id="t">Prize</label> <input type="text"  name="Prize">
+ <label id="t">Exact Location</label> <input type="text"  name="ExactLocation">
+ <label id="t">Contact Number</label> <input type="text"  name="ContactNumber">
+ <label id="t">CNIC</label> <input type="text" name="CNIC">
+ <label id="t">Size</label> <input type="text" name="Size">
+ <label id="t">Description</label> <input type="text" name="Description">
+  <label for="myfile">Upload the location files:</label>
   <input type="file" id="myfile" name="myfile" multiple><br><br>
-
-
-  
 <button>save</button>
 
 </form>

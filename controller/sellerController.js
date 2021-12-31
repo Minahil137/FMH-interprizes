@@ -4,12 +4,53 @@ app.set('view engine','ejs');
 const seller=require('../models/seller')
 const  store  =(req, res) => 
 {
+//    latitude:{
+//       type:Number
+//   },
+//   longitude:{
+//       type:Number
+//   },
+//   img:
+//   {
+//     type:String
+//   },
+//   Prize:
+//   {
+//       type:Number
+//   },
+//   Location:
+//   {
+//       type:String
+//   },
+//   ContactNumber:
+//   {
+//       type:String
+//   },
+//   CNIC:
+//   {
+//       type:String
+//   },
+//   Size:
+//   {
+//       type:String
+//   },
+//   Description:
+//   {
+//       type:String
+//   },
 
    const s = new seller({
  
 
       Latitude:req.body.Latitude,
-      longitude:req.body.longitude
+      longitude:req.body.longitude,
+      Prize:req.body.Prize,
+      Location:req.body.ExactLocation,
+      ContactNumber:req.body.ContactNumber,
+      CNIC:req.body.CNIC,
+      Size:req.body.Size,
+      Description:req.body,Description
+
    })
   
    
@@ -48,4 +89,11 @@ const display=(req,res)=>{
    //    }).catch((err=>res.send("ello")))
    
 }
-module.exports={store,display}
+const HAPPY=(req,res)=>{
+
+
+
+  res.render('dashboard.ejs')
+   
+}
+module.exports={store,display,HAPPY}

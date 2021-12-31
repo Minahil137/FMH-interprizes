@@ -8,37 +8,28 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
 </head>
 <body>
-  <form action="/login" method="post">
+  <form action="/ChangePassword" method="post">
     <h1>Login Form</h1>
     <div class="formcontainer">
     <hr/>
     <div class="container">
-      <label for="uname"><strong>Username</strong></label>
-      <input type="text" placeholder="Enter Username" name="username" required>
-      <label for="psw"><strong>Password</strong></label>
-      <input type="password" placeholder="Enter Password" name="password" required>
+      <label for="email"><strong>email</strong></label>
+      <input type="email" placeholder="Enter Email" name="email" value="<%= emailc %>" required>
+      <label for="otp"><strong>OTP</strong></label>
+      <input type="otp" placeholder="Enter otp" name="otp" required>
+      <label for="password"><strong>Password</strong></label>
+      <input type="password" placeholder="Enter password" name="password" required>
     </div>
     <button type="submit">Login</button>
-    <div class="container" style="background-color: orangered ">
-
+    <div class="container" style="background-color: rgb(69, 78, 116)">
       <label style="padding-left: 15px">
-      <input type="checkbox" checked="checked" name="remember"> Remember me
+      <input type="checkbox"  checked="checked" name="remember"> Remember me
       </label>
-      <span class="psw"><a href="/ForgotPassword"> Forgot password?</a></span>
-     
+      <span class="psw"><a href="#"> Forgot password?</a></span>
     </div>
   </form>
-  <a href="/signup">Sign Up</a>
 <div>
-  <% if(error.length > 0){%>
-		<div class="alert alert-primary" role="alert">
-	
-		
-			<%=error %>
-			 
-					</div>
-
-				<%}%>
+ 
 </div>
 
 <style>
@@ -46,25 +37,24 @@
   display: flex;
   justify-content: center;
   font-family: Roboto, Arial, sans-serif;
-  font-size: 20px;
+  font-size: 15px;
   }
   form {
-  border:orangered;
+  border:#241352;
   }
   input[type=text], input[type=password] {
   width: 100%;
   padding: 16px 8px;
   margin: 8px 0;
   display: inline-block;
-  border:orangered;
+  border:#241352;
   box-sizing: border-box;
   }
   button {
-  background-color: orangered;
-  color: azure;
-  font-size: 20px;
-  padding: 16px 0;
-  margin: 15px 0;
+  background-color: #241352;
+  color: gray;
+  padding: 14px 0;
+  margin: 10px 0;
   border: none;
   cursor: grabbing;
   width: 100%;
