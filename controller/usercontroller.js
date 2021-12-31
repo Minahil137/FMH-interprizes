@@ -6,7 +6,7 @@ const flash = require('connect-flash');
 const user=require('../models/usermodel')
 const passport=require('passport')
 require("../config/password")(passport)
-// Initalise a new express application
+// Initalise a new express app
 const app = express();
 
 app.use(passport.session())
